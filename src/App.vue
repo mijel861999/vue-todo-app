@@ -24,11 +24,11 @@ const addTodo = () => {
     done: false,
     createdAt: new Date().getTime(),
   });
-  input_content.value = ""
+  input_content.value = "";
 };
 
 const removeTodo = (todo) => {
-  todos.value = todos.value.filter(t => t !== todo)
+  todos.value = todos.value.filter((t) => t !== todo);
 };
 
 watch(
@@ -52,9 +52,13 @@ onMounted(() => {
 <template>
   <main class="app">
     <section class="greeting">
-      <h2 class="title">
-        What's up <input type="text" placeholder="Name here" v-model="name" />
-      </h2>
+      <h2 class="title">What's up</h2>
+      <input
+        class="input-name"
+        type="text"
+        placeholder="Name here"
+        v-model="name"
+      />
     </section>
 
     <section class="create-todo">
@@ -64,6 +68,7 @@ onMounted(() => {
         <h4>What's on your todo list?</h4>
         <input
           type="text"
+          class="todo-input-content"
           placeholder="e.g make a video"
           v-model="input_content"
         />
@@ -147,15 +152,63 @@ onMounted(() => {
 
 .add-todo-button {
   background: black;
-  color: grey;
+  color: white;
   border: none;
-  padding: 10px 10px;
+  padding: 10px 20px;
   border-radius: 10px;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .todo-item {
+  border: 0.5px solid grey;
+  width: 300px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  border-radius: 6px;
+  margin: 5px 0px;
+}
+
+.todo-item input {
+  border: none;
+}
+
+.todo-item .actions {
+  background-color: tomato;
+  justify-self: flex-end;
+}
+
+.todo-item .actions button {
+  background: tomato;
+}
+
+.todo-input-content {
+  border: 0.5px solid grey;
+  padding: 10px 10px;
+  border-radius: 7px;
+}
+
+.done {
+  opacity: 0.5;
+}
+
+.input-name {
+  border: none;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
 }
 </style>
